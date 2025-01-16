@@ -17,15 +17,17 @@ class _TaskScreenState extends State<TaskScreen>
   @override
   void initState() {
     super.initState();
+
+    //Animation Controller
     _controller = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 800),
-    )..forward();
+    )..forward(); //forward to start the animation
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller.dispose(); //must disposse to prevent memory leak
     super.dispose();
   }
 
@@ -93,6 +95,7 @@ class _TaskScreenState extends State<TaskScreen>
     );
   }
 
+//each card represent to task
   Widget _buildCard(BuildContext context,
       {required Color color,
       required String title,

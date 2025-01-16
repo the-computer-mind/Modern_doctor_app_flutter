@@ -19,12 +19,14 @@ class AppointmentBookingPage extends StatefulWidget {
 
 class _AppointmentBookingPageState extends State<AppointmentBookingPage> {
   String selectedTime = "11:00 AM";
-  final List<String> dates = ["7", "8", "9", "10", "11"];
+
   final List<String> timeSlots = [
     "11:00 AM",
-    "12:00 AM",
+    "12:00 PM",
+    "02:00 PM",
     "03:00 PM",
-    "04:00 PM"
+    "04:00 PM",
+    "06:00 PM",
   ];
   DateTime _selectedMonth = DateTime.now();
   DateTime _selectedDate = DateTime.now();
@@ -80,7 +82,7 @@ class _AppointmentBookingPageState extends State<AppointmentBookingPage> {
   }
 
   String selectedTimeSlot = "";
-
+//to check the selected timeslot is in future
   bool isTimeslotValid(String selectedTime, DateTime selectedDate) {
     final now = DateTime.now();
 
@@ -101,6 +103,8 @@ class _AppointmentBookingPageState extends State<AppointmentBookingPage> {
     // Check if the selected date and time are in the future
     return selectedDateTime.isAfter(now);
   }
+
+  //saving a appointment in local storage hive
 
   void saveAppointment() async {
     DateTime now = DateTime.now();
@@ -223,14 +227,6 @@ class _AppointmentBookingPageState extends State<AppointmentBookingPage> {
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
-            // Navigator.pushAndRemoveUntil(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) =>
-            //         HomeScreen(), // Replace with your target page
-            //   ),
-            //   (route) => false, // Removes all the previous routes
-            // );
           },
         ),
       ),
@@ -312,13 +308,6 @@ class _AppointmentBookingPageState extends State<AppointmentBookingPage> {
                   decoration: BoxDecoration(
                     color: hexToColor("#b28cff"),
                     borderRadius: BorderRadius.circular(20),
-                    // boxShadow: [
-                    //   BoxShadow(
-                    //     color: Colors.black12,
-                    //     blurRadius: 6,
-                    //     offset: Offset(0, 3),
-                    //   ),
-                    // ],
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

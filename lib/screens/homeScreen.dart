@@ -58,8 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
+      //used to remove default back arrow still giving back option
       onWillPop: () async {
-        // You can customize this behavior (e.g., showing a dialog or performing an action)
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => TaskScreen()),
@@ -78,7 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ? CustomScrollView(
                   slivers: [
                     SliverAppBar(
-                      expandedHeight: MediaQuery.of(context).size.height < 740
+                      expandedHeight: MediaQuery.of(context).size.height <
+                              740 //app responsibness
                           ? MediaQuery.of(context).size.height * 0.5
                           : MediaQuery.of(context).size.height * 0.4,
                       // pinned: true,
@@ -93,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         // ),
                         background: Container(
                           // margin: EdgeInsets.symmetric(horizontal: 5),
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(20),
                                 bottomRight: Radius.circular(20)),
@@ -115,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                Row(
+                                const Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
@@ -136,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    const Text(
                                       'Welcome Back',
                                       style: TextStyle(
                                         color: Colors.white,
@@ -221,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SizedBox(height: 5),
                                 _searchController.text.isNotEmpty
                                     ? SizedBox()
-                                    : Text(
+                                    : const Text(
                                         "Categories",
                                         style: TextStyle(
                                           color: Colors.black54,
@@ -293,6 +294,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? ChatWIthDoctor()
                       : TopDoctorsScreen(),
           floatingActionButton: DotNavigationBar(
+            //our custom modified library
             backgroundColor: Colors.white,
             boxShadow: [
               BoxShadow(
